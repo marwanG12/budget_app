@@ -1,12 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config(); // Charger les variables d'environnement
+const cors = require('cors');
+
 
 const app = express();
 
 // Middleware pour analyser le corps des requêtes en JSON
 app.use(express.json());
 
+// Autoriser toutes les requêtes depuis localhost:3000
+app.use(cors());
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("✅ Connecté à MongoDB"))
