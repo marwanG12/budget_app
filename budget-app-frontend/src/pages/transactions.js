@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import TransactionList from '../components/TransactionList';
 import AddTransaction from '../components/AddTransaction';
+import FilterTransactions from '../components/FilterTransactions';
 import '../Transactions.css';
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('Toutes');
 
   useEffect(() => {
     fetchTransactions();
@@ -21,14 +23,26 @@ const Transactions = () => {
   };
 
   const handleTransactionAdded = (newTransaction) => {
-    setTransactions([...transactions, newTransaction]); // Met à jour la liste en live
+    setTransactions([...transactions, newTransaction]); 
   };
+
+  const handleFilterChange = (category) => {
+    console.log('Filtre changé:', category); // Log pour vérifier le changement de filtre
+    setSelectedCategory(category);
+  };
+
+  const filteredTransactions = selectedCategory === 'Toutes'
+    ? transactions
+    : transactions.filter(transaction => transaction.category === selectedCategory);
+
+  console.log('Transactions filtrées:', filteredTransactions); // Log pour vérifier les transactions filtrées
 
   return (
     <div>
       <h1>Transactions</h1>
       <AddTransaction onTransactionAdded={handleTransactionAdded} />
-      <TransactionList transactions={transactions} />
+      <FilterTransactions onCategoryChange={handleFilterChange} />
+      <TransactionList transactions={filteredTransactions} />
     </div>
   );
 };

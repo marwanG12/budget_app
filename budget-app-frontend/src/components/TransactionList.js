@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../TransactionList.css';  // Assure-toi que ce chemin est correct
 
 const TransactionList = ({ transactions }) => {
+  console.log('Transactions dans TransactionList:', transactions); // Log pour vérifier les transactions reçues
+
   const [transactionsList, setTransactionsList] = useState([]);
   const [editingTransaction, setEditingTransaction] = useState(null); // Etat pour la transaction en cours d'édition
   const [formData, setFormData] = useState({ description: '', amount: '', category: '', type: '' }); // Données du formulaire
@@ -14,19 +16,10 @@ const TransactionList = ({ transactions }) => {
     }).format(amount);
   };
 
-  // Charger les transactions depuis l'API
+  // Mise à jour de la liste des transactions chaque fois que `transactions` change
   useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/transactions");
-        const data = await response.json();
-        setTransactionsList(data);
-      } catch (error) {
-        console.error("Erreur lors de la récupération des transactions :", error);
-      }
-    };
-    fetchTransactions();
-  }, []);
+    setTransactionsList(transactions); // Utilise directement les transactions passées en props
+  }, [transactions]); // Se déclenche à chaque fois que `transactions` change
 
   // Fonction pour supprimer une transaction
   const handleDelete = async (id) => {
@@ -161,5 +154,5 @@ const TransactionList = ({ transactions }) => {
     </div>
   );
 };
-//test
+//comment
 export default TransactionList;
