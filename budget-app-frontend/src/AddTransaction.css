@@ -1,0 +1,73 @@
+/* Conteneur principal */
+div {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 30px auto;
+}
+
+/* En-tête du formulaire */
+h2 {
+    font-size: 1.8rem;
+    color: #192c46;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #192c46;
+    padding-bottom: 10px;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-wrap: nowrap; /* Permet aux champs de passer à la ligne si l'écran est petit */
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Conteneur pour chaque champ (label + input) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Chaque champ prendra un espace équitable */
+    min-width: 180px; /* Largeur minimale pour éviter que ça se compresse trop */
+}
+
+/* Labels */
+label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Champs */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Bouton */
+button {
+    padding: 12px;
+    font-size: 1.2rem;
+    background-color: #192c46;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Responsivité */
+@media (max-width: 900px) {
+    form {
+        flex-direction: column; /* Passe en colonne sur petits écrans */
+    }
+}

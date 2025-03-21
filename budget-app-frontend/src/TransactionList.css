@@ -1,26 +1,139 @@
-/* Style pour la liste de transactions */
+/* Styles généraux */
 .transaction-list {
-  display: flex;
-  flex-wrap: wrap;  /* Pour permettre aux éléments de passer à la ligne si l'espace est insuffisant */
-  gap: 20px;        /* Espace entre les éléments */
-  justify-content: space-between;  /* Espace égal entre les éléments */
+  display: inline-block;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  font-family: 'Arial', sans-serif; /* Police plus moderne */
+  color: #333; /* Couleur de texte plus douce */
 }
 
-/* Style pour chaque carte de transaction */
 .transaction-item {
-  background-color: #a1a6b4;
-  padding: 20px;
+  margin: 10px;
+  display: inline-block;
+  width: fit-content;
+  background-color: #fff;
   border-radius: 8px;
-  width: 200px;  /* Largeur de chaque carte */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  font-size: 1rem;
+  line-height: 1.5; /* Amélioration de la lisibilité du texte */
+}
+
+.transaction-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre plus forte au survol */
 }
 
 .transaction-item h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #4672ac; /* Couleur plus forte pour les titres */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Ombre légère sur les titres */
 }
 
 .transaction-item p {
-  font-size: 14px;
-  margin: 5px 0;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #666; /* Couleur de texte plus douce pour le contenu */
+}
+
+.transaction-item button {
+  background-color: #4672ac;
+  color: #fff;
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold; /* Mise en valeur du texte des boutons */
+}
+
+.transaction-item button:hover {
+  background-color: #355f84; /* Couleur de survol légèrement plus foncée */
+}
+
+.transaction-item button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(70, 114, 172, 0.5); /* Effet visuel au focus */
+}
+
+.edit-form {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-top: 30px;
+  font-family: 'Arial', sans-serif;
+}
+
+.edit-form h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #4672ac; /* Couleur spécifique pour les titres dans le formulaire */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Ombre légère sur les titres */
+}
+
+.edit-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333; /* Couleur plus douce pour les labels */
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.edit-form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.edit-form input:focus {
+  border-color: #4672ac; /* Changement de bordure au focus */
+  box-shadow: 0 0 5px rgba(70, 114, 172, 0.3); /* Effet visuel au focus */
+}
+
+.edit-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.edit-form button:hover {
+  background-color: #388e3c;
+}
+
+.edit-form button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(72, 186, 72, 0.5);
+}
+
+.edit-form .cancel-button {
+  background-color: #4672ac;
+}
+
+.edit-form .cancel-button:hover {
+  background-color: #355f84;
+}
+
+.edit-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

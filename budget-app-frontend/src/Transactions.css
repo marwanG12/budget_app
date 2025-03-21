@@ -1,0 +1,111 @@
+/* Styles pour le conteneur principal */
+div {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    /* border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  }
+  
+  /* En-tête de la page */
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #192c46;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #192c46;
+    padding-bottom: 10px;
+  }
+  
+  /* Conteneur du formulaire d'ajout */
+  .add-transaction-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Style de la liste des transactions */
+  .transaction-list-container {
+    margin-top: 20px;
+  }
+  
+  /* Ajout d'un peu de marge entre les éléments */
+  .transaction-list-container ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  /* Style des transactions individuelles */
+  .transaction-list-container li {
+    margin-bottom: 20px;
+  }
+  
+  /* On peut styliser le formulaire d'ajout (en supposant que AddTransaction envoie un formulaire) */
+  .add-transaction-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Formulaire d'ajout : champs de saisie */
+  .add-transaction-form input,
+  .add-transaction-form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Boutons du formulaire */
+  .add-transaction-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #24295d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-transaction-form button:hover {
+    background-color: #24295d;
+  }
+  
+  .add-transaction-form button:focus {
+    outline: none;
+  }
+  
+  /* Responsivité : ajustements sur les petits écrans */
+  @media (max-width: 768px) {
+    div {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+      text-align: left;
+    }
+  
+    .add-transaction-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .add-transaction-form {
+      width: 100%;
+    }
+  }
+  

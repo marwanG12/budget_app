@@ -1,0 +1,65 @@
+/* Styles généraux pour la navbar */
+nav {
+    background-color: #19293d; /* Couleur de fond */
+    padding: 15px 20px; /* Espacement interne */
+    border-radius: 8px; /* Coins arrondis pour un effet plus moderne */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour l'effet de profondeur */
+    font-family: 'Arial', sans-serif; /* Police moderne */
+  }
+  
+  /* Style de la liste de navigation */
+  ul {
+    list-style: none; /* Suppression des puces */
+    display: flex; /* Affichage horizontal */
+    justify-content: center; /* Centrer les éléments */
+    gap: 20px; /* Espacement entre les éléments */
+    margin: 0; /* Suppression des marges par défaut */
+    padding: 0; /* Suppression des paddings par défaut */
+  }
+  
+  /* Style des éléments de la liste */
+  li {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  /* Style des liens */
+  a {
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Suppression du soulignement par défaut */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animation de transition pour l'effet de survol */
+  }
+  
+  a:hover {
+    color: #fff; /* Reste blanc au survol */
+    transform: translateY(-3px); /* Léger effet de translation au survol */
+  }
+  
+  a:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(70, 114, 172, 0.5); /* Ombre douce au focus */
+  }
+  
+  /* Style pour les liens actifs */
+  a.active {
+    color: #a7a8b0; /* Couleur différente pour le lien actif */
+    font-weight: normal; /* Poids de police normal pour les liens actifs */
+  }
+  
+  /* Réduire la taille de la navbar sur mobile */
+  @media (max-width: 768px) {
+    nav {
+      padding: 10px; /* Réduire l'espacement */
+    }
+  
+    ul {
+      flex-direction: column; /* Passage à une colonne pour les écrans petits */
+      align-items: center; /* Centrer les éléments */
+    }
+  
+    li {
+      font-size: 1rem; /* Réduire la taille de la police */
+      margin-bottom: 10px; /* Ajouter un espacement entre les éléments */
+    }
+  }
+  

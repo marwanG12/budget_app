@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../navbar.css';
 
 const Navbar = () => {
+  const [activeLink, setActiveLink] = useState('/');
+
+  const handleLinkClick = (path) => {
+    setActiveLink(path);
+  };
+
   return (
-    <nav style={{ padding: '10px', background: '#282c34', color: 'white' }}>
-      <ul style={{ display: 'flex', listStyle: 'none', gap: '20px' }}>
+    <nav>
+      <ul>
         <li>
-          <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Accueil</Link>
+          <Link
+            to="/"
+            className={activeLink === '/' ? 'active' : ''}
+            onClick={() => handleLinkClick('/')}
+          >
+            Accueil
+          </Link>
         </li>
         <li>
-          <Link to="/transactions" style={{ color: 'white', textDecoration: 'none' }}>Transactions</Link>
+          <Link
+            to="/transactions"
+            className={activeLink === '/transactions' ? 'active' : ''}
+            onClick={() => handleLinkClick('/transactions')}
+          >
+            Transactions
+          </Link>
         </li>
       </ul>
     </nav>
@@ -17,3 +36,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
