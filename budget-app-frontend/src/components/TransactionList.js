@@ -3,6 +3,8 @@ import '../TransactionList.css';  // Assure-toi que ce chemin est correct
 
 const TransactionList = ({ transactions }) => {
   const [transactionsList, setTransactionsList] = useState([]);
+  const [editingTransaction, setEditingTransaction] = useState(null); // Etat pour la transaction en cours d'édition
+  const [formData, setFormData] = useState({ description: '', amount: '', category: '', type: '' }); // Données du formulaire
 
   // Fonction pour formater les montants en euros
   const formatAmount = (amount) => {
@@ -12,11 +14,8 @@ const TransactionList = ({ transactions }) => {
     }).format(amount);
   };
 
-    
-    
+  // Charger les transactions depuis l'API
   useEffect(() => {
-    //fonction async qui continent un call api axios vers ton backend qui vas te retourner ta liste de course
-    //si tas un resultat tu le stocke dans ton state
     const fetchTransactions = async () => {
       try {
         const response = await fetch("http://localhost:5000/transactions");
@@ -37,10 +36,58 @@ const TransactionList = ({ transactions }) => {
       });
 
       if (response.ok) {
-        // Mettre à jour l'état des transactions en supprimant la transaction
         setTransactionsList(transactionsList.filter((transaction) => transaction._id !== id));
       } else {
         console.error('Erreur lors de la suppression de la transaction');
+      }
+    } catch (error) {
+      console.error('Erreur de réseau ou autre erreur :', error);
+    }
+  };
+
+  // Fonction pour éditer une transaction
+  const handleEdit = (transaction) => {
+    setEditingTransaction(transaction);
+    setFormData({
+      description: transaction.description,
+      amount: transaction.amount,
+      category: transaction.category,
+      type: transaction.type,
+    });
+  };
+
+  // Fonction pour gérer les changements dans le formulaire
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Fonction pour soumettre la modification
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const updatedTransaction = { ...formData };
+
+    try {
+      const response = await fetch(`http://localhost:5000/transactions/${editingTransaction._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedTransaction),
+      });
+
+      if (response.ok) {
+        const updatedData = await response.json();
+        setTransactionsList(
+          transactionsList.map((transaction) =>
+            transaction._id === editingTransaction._id ? updatedData : transaction
+          )
+        );
+        setEditingTransaction(null); // Fermer le formulaire après la modification
+      } else {
+        console.error('Erreur lors de la mise à jour de la transaction');
       }
     } catch (error) {
       console.error('Erreur de réseau ou autre erreur :', error);
@@ -59,11 +106,60 @@ const TransactionList = ({ transactions }) => {
             <p><strong>Catégorie:</strong> {transaction.category}</p>
             <p><strong>Type:</strong> {transaction.type}</p>
             <button onClick={() => handleDelete(transaction._id)}>Supprimer</button>
+            <button onClick={() => handleEdit(transaction)}>Modifier</button>
           </div>
         ))}
       </div>
+
+      {editingTransaction && (
+        <div className="edit-form">
+          <h3>Modifier la transaction</h3>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Description:
+              <input
+                type="text"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Montant:
+              <input
+                type="number"
+                name="amount"
+                value={formData.amount}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Catégorie:
+              <input
+                type="text"
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Type:
+              <input
+                type="text"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+              />
+            </label>
+            <button type="submit">Sauvegarder</button>
+            <button type="button" onClick={() => setEditingTransaction(null)}>
+              Annuler
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
-
+//test
 export default TransactionList;
