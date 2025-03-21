@@ -89,21 +89,6 @@ const TransactionList = ({ transactions }) => {
 
   return (
     <div>
-      <h2>Liste des transactions</h2>
-      <div className="transaction-list">
-        {transactionsList.map((transaction) => (
-          <div className="transaction-item" key={transaction._id}>
-            <h3>{transaction.description}</h3>
-            <p><strong>Montant:</strong> {formatAmount(transaction.amount)}</p>
-            <p><strong>Date:</strong> {new Date(transaction.date).toLocaleDateString()}</p>
-            <p><strong>Catégorie:</strong> {transaction.category}</p>
-            <p><strong>Type:</strong> {transaction.type}</p>
-            <button onClick={() => handleDelete(transaction._id)}>Supprimer</button>
-            <button onClick={() => handleEdit(transaction)}>Modifier</button>
-          </div>
-        ))}
-      </div>
-
       {editingTransaction && (
         <div className="edit-form">
           <h3>Modifier la transaction</h3>
@@ -151,8 +136,23 @@ const TransactionList = ({ transactions }) => {
           </form>
         </div>
       )}
+
+      <h2>Liste des transactions</h2>
+      <div className="transaction-list">
+        {transactionsList.map((transaction) => (
+          <div className="transaction-item" key={transaction._id}>
+            <h3>{transaction.description}</h3>
+            <p><strong>Montant:</strong> {formatAmount(transaction.amount)}</p>
+            <p><strong>Date:</strong> {new Date(transaction.date).toLocaleDateString()}</p>
+            <p><strong>Catégorie:</strong> {transaction.category}</p>
+            <p><strong>Type:</strong> {transaction.type}</p>
+            <button onClick={() => handleDelete(transaction._id)}>Supprimer</button>
+            <button onClick={() => handleEdit(transaction)}>Modifier</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
-//comment
+
 export default TransactionList;
