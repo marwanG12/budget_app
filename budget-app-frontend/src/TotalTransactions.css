@@ -1,0 +1,66 @@
+/* Conteneur principal */
+.total-transactions {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 600px;
+  }
+  
+  /* Titre principal */
+  .total-transactions h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Conteneur des cartes */
+  .card-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  /* Styles de base pour les cartes */
+  .card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  /* Animation au survol */
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Carte Revenus */
+  .revenus {
+    background: linear-gradient(135deg, #87c089, #a5bca6); /* Dégradé vert */
+    color: white;
+    border: 3px solid #276e29;
+  }
+  
+  /* Carte Dépenses */
+  .depenses {
+    background: linear-gradient(135deg, #c68786, #b15148); /* Dégradé rouge */
+    color: white;
+    border: 3px solid #962c2b;
+  }
+  
+  /* Titre dans les cartes */
+  .card h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Texte des montants */
+  .card p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,64 @@
+/* Style de base pour la section des totaux par catégorie */
+.total-transactions-category {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    background-color: #f4f4f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Titre de la section */
+  .total-transactions-category h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Conteneur pour les cartes */
+  .category-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Style de chaque carte */
+  .category-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Changement de style au survol (hover) */
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Titre de chaque carte */
+  .category-card h4 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Montant de chaque catégorie */
+  .category-card p {
+    font-size: 1.5rem;
+    color: #27ae60;
+    font-weight: bold;
+  }
+  
+  /* Pour les petits écrans (mobiles) */
+  @media (max-width: 600px) {
+    .category-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
