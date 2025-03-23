@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import '../TotalTransactionsCategory.css';
 
-const TotalTransactionsCategory = () => {
+const TotalTransactionsCategory = ({ startDate, endDate }) => {
   const [totalsByCategory, setTotalsByCategory] = useState({});
 
   useEffect(() => {
     const fetchTotalsByCategory = async () => {
       try {
-        const response = await fetch('http://localhost:5000/totaux-par-categorie');
+        const queryParams = new URLSearchParams();
+        if (startDate) queryParams.append('startDate', startDate);
+        if (endDate) queryParams.append('endDate', endDate);
+
+        const response = await fetch(`http://localhost:5000/totaux-par-categorie?${queryParams}`);
         if (response.ok) {
           const data = await response.json();
           setTotalsByCategory(data);
@@ -20,7 +24,7 @@ const TotalTransactionsCategory = () => {
     };
 
     fetchTotalsByCategory();
-  }, []);
+  }, [startDate, endDate]); // Recharger les données lorsqu'on change les dates
 
   return (
     <div className="total-transactions-category">
